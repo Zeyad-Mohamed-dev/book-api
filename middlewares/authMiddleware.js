@@ -7,6 +7,7 @@ const authMiddleware = (req, res, next) => {
             const decoded = jwtManager.verifyToken(authToken);
             if(decoded) {
                 req.user = decoded.id;
+                req.role = decoded.role;
                 console.log(req.user);
                 next();
             }

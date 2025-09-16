@@ -2,6 +2,7 @@ const express= require("express");
 const router = express.Router();
 const service = require("../services/bookService")
 const authMidd = require("../middlewares/authMiddleware");
+const authorizeMidd = require("../middlewares/authorizeMiddleware");
 
 router.get("/", async (req, res) => {
     try {
@@ -30,7 +31,7 @@ router.post("/", authMidd , (req, res) => {
     }
 })
 
-router.delete('/:id',authMidd, (req, res) => {
+router.delete('/:id',authMidd, authorizeMidd("admin") , (req, res) => {
     const id = req.params.id;
     service.deleteBookById(id);
     const books = service.getAllBooks();

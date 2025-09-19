@@ -25,9 +25,19 @@ const updateBookById = async (id, book) => {
     return await model.findByIdAndUpdate(id, {$set: book}, {new: true, runValidators: true});
 }
 
+const getBookByCreatedBy = async (id) => {
+    return await model.findOne({createdBy: id});    
+}
+
+const deleteBookById = async (id) => {
+    return await model.deleteOne({_id: id});
+}
+
 module.exports = {
     createBook,
     getBookById,
     updateBookById,
-    getAllBooks
+    getAllBooks,
+    getBookByCreatedBy,
+    deleteBookById
 }

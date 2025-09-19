@@ -1,4 +1,4 @@
-const authorizeRequest = (role) => {
+const authorizeRequest = (role, isCreator) => {
         return (req, res, next) => {
             if(req.role === role) {
                 next();

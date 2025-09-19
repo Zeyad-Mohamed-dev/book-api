@@ -16,9 +16,8 @@ const createNewBook = function(book) {
     return repositiry.createBook(book);
 }
 
-const deleteBookById = function(id) {
-    repositiry.deleteBookById(id);
-    return true;
+const deleteBookById = async function(id) {
+    return await repositiry.deleteBookById(id);
 }
 
 // const updateBook = function (id, newBook) {

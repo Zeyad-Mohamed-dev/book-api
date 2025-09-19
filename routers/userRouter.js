@@ -2,6 +2,21 @@ const express= require("express");
 const service = require("../services/userService");
 const router = express.Router();
 const haser = require("../utils/hashPassword");
+const authMiddleware = require("../middlewares/authMiddleware");
+
+router.get("/me" , authMiddleware ,async (req, res) => {
+    if(req.user != null) {
+        res.status(200).send({
+            "email" : req.email,
+            "username" : req.name,
+            "role" : req.role,
+        })
+    }
+    else {
+        res.status(400).send({"error" : "user is not signed in"});
+    }
+})
+
 
 router.post("/register" , async (req, res) => {
         const user = req.body;

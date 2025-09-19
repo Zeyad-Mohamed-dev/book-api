@@ -1,9 +1,20 @@
 const repository = require("../repository/userRepository");
+const bookRepository = require("../repository/bookRepository");
 const haser = require("../utils/hashPassword");
 const byc = require("bcryptjs");
 const jwtManager = require("../utils/generateToken");
+const { default: mongoose } = require("mongoose");
+
 const checkExist = async (email) => {
     return await repository.getUserByEmail(email);
+}
+
+const getAllUsers = async () => {
+    return await repository.getALlUsers();
+}
+
+const getUserById = async (id) => {
+    return await repository.getUserById(id);
 }
 
 const registerUser = async (user) => {
@@ -43,8 +54,19 @@ const validatUser = async (userValidation) => {
     }
     return jwtManager.generateJwt(payload, user.id);
 }
+
+const isUserCreator = async (userId, bookId) => {
+        const book = await bookRepository.getBookByCreatedBy(userId);
+        console.log(book);
+        if(!book) {
+            return false;
+        }
+        return book.id === bookId;
+} 
 module.exports = {
     checkExist,
     registerUser,
-    validatUser
+    validatUser,
+    isUserCreator,
+    getAllUsers
 }

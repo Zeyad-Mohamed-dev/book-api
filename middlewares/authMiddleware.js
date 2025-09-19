@@ -8,6 +8,8 @@ const authMiddleware = (req, res, next) => {
             if(decoded) {
                 req.user = decoded.id;
                 req.role = decoded.role;
+                req.email = decoded.email;
+                req.name = decoded.name;
                 console.log(req.user);
                 next();
             }

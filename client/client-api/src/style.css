@@ -1,0 +1,29 @@
+#app {
+    display: flex;
+    flex-direction: column;
+    gap: 20%;
+    text-align: center;
+}
+
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px; /* Adds space between form elements */
+  max-width: 400px;
+  margin: 0 auto; /* Centers the form on the page */
+  align-items: center;
+}
+
+label {
+  font-weight: bold;
+  color: #333;
+}
+
+input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+}

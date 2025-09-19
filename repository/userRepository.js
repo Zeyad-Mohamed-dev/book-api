@@ -13,11 +13,21 @@ const createUser = async (user) => {
         return await newUser.save();
 }
 
+const getALlUsers = async () => {
+    return await userModel.find({});
+}
+
 const getUserByEmail = async (userEmail) => {
     return await userModel.findOne({email: userEmail});
 }
 
+const getUserById = async (userId) => {
+    return await userModel.findOne({_id: userId});
+}
+
 module.exports = {
     createUser,
-    getUserByEmail
+    getUserByEmail,
+    getUserById,
+    getALlUsers
 }

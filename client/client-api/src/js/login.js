@@ -12,8 +12,9 @@ form.addEventListener("submit" , async (e) => {
             password: password
         })
 
-        if(res.status === 201) {
-            console.log(res.data.response);
+        if(res.status === 200) {
+            localStorage.setItem("token", res.data.token);
+            window.location.href = "./src/books.html";
         }
 
     }

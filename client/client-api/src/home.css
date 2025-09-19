@@ -1,0 +1,41 @@
+:root {
+  --card-bg: #ffffff;
+  --card-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  --card-radius: 16px;
+  --card-padding: 20px;
+}
+
+
+#container {
+    display: flex;
+    width: 100%;
+    gap: 8px;
+    flex-direction: row;
+}
+/* Base card style */
+.card {
+  background: var(--card-bg);
+  border-radius: var(--card-radius);
+  box-shadow: var(--card-shadow);
+  padding: var(--card-padding);
+  width: 30%;
+
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* Hover effect */
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+}
+
+.search {
+    float: right;
+  padding: 6px;
+  border: none;
+  margin-top: 8px;
+  margin-right: 16px;
+  font-size: 17px;
+  border: black 1px solid;
+  border-radius: 4px;
+}

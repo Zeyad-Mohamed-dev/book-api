@@ -1,6 +1,25 @@
 const model = require("../model/bookModel");
-const getAllBooks = async () => {
-    return await model.find();
+const getAllBooks = async ({q, sort} = {}) => {
+  let filter;
+  let sortOption;
+    if (q) {
+    filter = {
+      $or: [
+        { title: { $regex: q, $options: "i" } },      
+        { description: { $regex: q, $options: "i" } }
+      ]
+    };
+  }
+
+
+  if (sort) {
+    if (sort.startsWith("-")) {
+      sortOption[sort.substring(1)] = -1; 
+    } else {
+      sortOption[sort] = 1; 
+    }
+  }
+  return await model.find(filter).sort(sortOption);
 }
 const createBook = async (book) => {
     const newBook = new model({

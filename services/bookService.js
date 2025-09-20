@@ -1,8 +1,7 @@
-const fs = require('fs');
 const repositiry = require("../repository/bookRepository");
-const getAllBooks = async function() {
-    return await repositiry.getAllBooks();
-}
+const getAllBooks = async function({ q, sort }= {}) {
+  return await repositiry.getAllBooks({ q, sort });
+};
 
 const getBookById = async (id) => {
     return await repositiry.getBookById(id);

@@ -14,7 +14,7 @@ form.addEventListener("submit" , async (e) => {
 
         if(res.status === 200) {
             localStorage.setItem("token", res.data.token);
-            window.location.href = "./src/books.html";
+            window.location.href = "../home.html";
         }
 
     }

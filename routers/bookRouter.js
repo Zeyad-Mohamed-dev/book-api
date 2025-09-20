@@ -7,9 +7,11 @@ const authorizeMidd = require("../middlewares/authorizeMiddleware");
 
 router.get("/", async (req, res) => {
     try {
-        const books = await bookService.getAllBooks();
-        res.send(books);
+        let { q, sort } = req.query;
+        const books = await bookService.getAllBooks({ q, sort });
+        res.status(200).send(books);
     } catch (e) {
+        console.log(e.message);
         res.status(400).send({"error" : "invalid request"});
     }
     
